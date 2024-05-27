@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1503px;
+  width: 100%;
+  margin: auto;
+}
+

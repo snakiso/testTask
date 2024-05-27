@@ -1,0 +1,24 @@
+.sidebar {
+  border: 1px solid #CFCFE4;
+  border-radius: 18px;
+  font-size: 18px;
+  color: #39414B;
+  padding: 12px;
+
+
+  &__button {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 12px;
+
+    &_active {
+      color: white;
+      background-color: #5FBF77;
+    }
+  }
+}
