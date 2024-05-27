@@ -7,12 +7,11 @@ import {ActionsTypes, StateType} from "../reducers/state-reducer-types.ts";
 type AppProviderProps = {
     children: ReactNode
 }
-type AppContextType = {
-    state: StateType;
-    dispatch: Dispatch<ActionsTypes>;
-};
-const AppContext = createContext<AppContextType | undefined>(undefined);
-export const AppProvider = ({ children }: AppProviderProps) => {
+
+const StateContext = createContext<StateType | undefined>(undefined);
+const DispatchContext = createContext<Dispatch<ActionsTypes> | undefined>(undefined);
+;
+export const AppProvider = ({children}: AppProviderProps) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -22,21 +21,31 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 tags: gettingTags(data.data),
                 cards: data.data,
             };
-            dispatch({ type: 'SET_INITIAL_DATA', payload: initialData });
+            dispatch({type: 'SET_INITIAL_DATA', payload: initialData});
         });
     }, []);
 
     return (
-        <AppContext.Provider value={{state, dispatch}}>
-            {children}
-        </AppContext.Provider>
+        <StateContext.Provider value={state}>
+            <DispatchContext.Provider value={dispatch}>
+                {children}
+            </DispatchContext.Provider>
+        </StateContext.Provider>
     );
 };
 
-export const useAppContext = () => {
-    const context = useContext(AppContext);
-    if (!context) {
-        throw new Error('useAppContext must be used within an AppProvider');
+export const useAppState = () => {
+    const context = useContext(StateContext);
+    if (context === undefined) {
+        throw new Error('useAppState must be used within a StateContext.Provider');
+    }
+    return context;
+};
+
+export const useAppDispatch = () => {
+    const context = useContext(DispatchContext);
+    if (context === undefined) {
+        throw new Error('useAppDispatch must be used within a DispatchContext.Provider');
     }
     return context;
 };

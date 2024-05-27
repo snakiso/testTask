@@ -1,4 +1,5 @@
 export type KidTechType = KidTechTypeChild[];
+
 export type KidTechTypeChild = {
 	name: string;
 	id: string;
@@ -7,4 +8,3 @@ export type KidTechTypeChild = {
 	tags: string[];
 }
 
-export type TransformedKidTechType = KidTechTypeChild[][];

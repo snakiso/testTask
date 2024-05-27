@@ -1,4 +1,4 @@
-import './cards.scss'
+import './card.scss'
 
 type CardProps = {
     img: string
@@ -7,7 +7,7 @@ type CardProps = {
     id: string
 }
 
-export const Card = ({img, title, background,id}: CardProps) => {
+export const Card = ({img, title, background, id}: CardProps) => {
     return (
         <a href={id} className={'card'}>
             <div className={'card__img-box'} style={{backgroundColor: background}}>
