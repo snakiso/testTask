@@ -3,9 +3,14 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 800;
   font-style: normal;
+  scrollbar-gutter: stable;
 }
 
-a{
+html {
+  scrollbar-gutter: stable;
+}
+
+a {
   all: unset;
 }
 
@@ -13,7 +18,7 @@ ul {
   all: unset;
 }
 
-li{
+li {
   all: unset;
 }
 
